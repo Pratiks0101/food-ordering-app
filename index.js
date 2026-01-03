@@ -1,5 +1,22 @@
 import menuArray from "./data.js";
 
+let orderArray = []
+
+document.getElementById('item-tray').addEventListener('click', function(e){
+    if(e.target.dataset.add){
+        handleAddBtn(e.target.dataset.add)
+    }
+    
+})
+
+function handleAddBtn(itemId){
+    const itemObj = menuArray.filter(item =>  item.id === Number(itemId))
+    orderArray.push(itemObj)
+    console.log(orderArray);
+    
+    
+}
+
 function item(data = name, ingredients, id, price, emoji) {
     const menuItem = menuArray.map( ({name, ingredients, id, price, emoji}) => {
         return `
@@ -8,7 +25,7 @@ function item(data = name, ingredients, id, price, emoji) {
             <h2 class="item-photo">${emoji}</h2>
             <div class="item-name">
                 <h3>${name}</h3>
-                <h4 class="ingredients">${ingredients}</h4>
+                <h4>${ingredients}</h4>
                 <h3>$${price}</h3>
             </div>
         </div>
@@ -20,4 +37,14 @@ function item(data = name, ingredients, id, price, emoji) {
     return menuItem
 }
 
+function placeOrder(){
+    let orderHtml = `<h2>Your Order</h2>`
+    const yourOrder = orderArray.map(order => 
+        orderHtml += `
+        <span>${order}</span>
+        `
+    )
+        return yourOrder
+}
+document.getElementById('order-tray').innerHTML = placeOrder()
 document.getElementById('item-tray').innerHTML = item()
