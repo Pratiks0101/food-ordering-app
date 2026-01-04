@@ -2,6 +2,7 @@ body {
     margin: 0 auto;
     height: 100%;
     width: 600px;
+    font-family: 'Smythe';
 } 
 
 .container{
@@ -71,4 +72,54 @@ body {
     color: #8B8B8B;
     font-size: 14px;
     margin-bottom: 20px;
+}
+
+.order-head{
+    text-align: center;
+}
+
+.complete-order{
+    margin: 10px auto;
+    width: 548px;
+    height: 45px;
+    display: flex;
+    align-items: center;  
+    justify-content: flex-start;
+    padding: 20px 220px;
+    background-color: #16DB99;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.order-final-item{
+    width: 548px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    /* background-color: red; */
+}
+
+.line{
+    width: 548px;
+    margin: 10px auto;
+    margin-top: 25px;
+    /* margin-bottom: 15px; */
+    border-bottom: 2px solid black;
+}
+
+.price-total{
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 30px;
+}
+
+.order-final-item button{
+    border: none;
+    background: transparent;
+    color: #9d9a9a;
+    margin-right: auto;
 }

@@ -6,15 +6,24 @@ document.getElementById('item-tray').addEventListener('click', function(e){
     if(e.target.dataset.add){
         handleAddBtn(e.target.dataset.add)
     }
-    
 })
 
+document.getElementById('order-tray').addEventListener('click', function(e){
+    if(e.target.dataset.remove){
+        handleDeletebtn(e.target.dataset.remove)
+    }
+})
 function handleAddBtn(itemId){
-    const itemObj = menuArray.filter(item =>  item.id === Number(itemId))
-    orderArray.push(itemObj)
-    console.log(orderArray);
-    
-    
+    const itemObj = menuArray.find(item =>  item.id === Number(itemId))
+    if (itemObj){
+        orderArray.push(itemObj)
+    }
+    renderOrder()
+}
+
+function handleDeletebtn(index){
+    orderArray.splice(index, 1)
+    renderOrder()
 }
 
 function item(data = name, ingredients, id, price, emoji) {
@@ -38,13 +47,43 @@ function item(data = name, ingredients, id, price, emoji) {
 }
 
 function placeOrder(){
-    let orderHtml = `<h2>Your Order</h2>`
-    const yourOrder = orderArray.map(order => 
-        orderHtml += `
-        <span>${order}</span>
+    if (orderArray.length === 0){
+        return " "
+    }else {
+        const orderHtml = orderArray.map((order, index) =>{
+        return `<div class="order-final-item">
+                <span>${order.name}</span>
+                <button data-remove="${index}">remove</button>
+                <span>$${order.price}</span>
+                </div>`}
+        ).join('')
+        
+        return `<h2 class="order-head">Your Order</h2>
+                ${orderHtml}
+                <div class="line"></div>
+                <div class="price-total">
+                    <span>Total Price:</span>
+                    <span>$${getTotal()}</span>
+                </div>
+                <button class="complete-order">${'Complete Order'}</button>
         `
-    )
-        return yourOrder
+    }
 }
+
+
+function getTotal(){
+    const totalPrice = orderArray.reduce((total, currentElement) => {
+        return total + currentElement.price
+    }, 0)
+    return totalPrice
+}
+
+
+function renderOrder(){
+    document.getElementById('order-tray').innerHTML = placeOrder()
+}
+
+renderOrder()
+
 document.getElementById('order-tray').innerHTML = placeOrder()
 document.getElementById('item-tray').innerHTML = item()
