@@ -15,6 +15,15 @@
         <div class="container"></div>
         <div class="item-tray" id="item-tray"></div>
         <div class="order-tray" id="order-tray"></div>
+        <div class="checkout-payment-modal" id="checkout-payment-modal">
+            <h3>Enter Card Details</h3>
+            <form class="checkout-form" id="checkout-form">
+                <input type="text" name="name" id="name" placeholder="Enter Your Name" required>
+                <input type="text" name="card-number" id="card-number" placeholder="Enter Card Number" required>
+                <input type="text" name="cvv-number" id="cvv-number" placeholder="Enter CVV" required>
+                <button type="submit">Pay</button>
+            </form>
+        </div>
 	<script src="index.js" type="module"></script>
     </body>
 </html>

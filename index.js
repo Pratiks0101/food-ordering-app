@@ -12,7 +12,25 @@ document.getElementById('order-tray').addEventListener('click', function(e){
     if(e.target.dataset.remove){
         handleDeletebtn(e.target.dataset.remove)
     }
+    else if(e.target.classList.contains('complete-order')){
+        document.getElementById('checkout-payment-modal').style.display = 'block'
+    }
 })
+
+document.getElementById('checkout-form').addEventListener('submit', function(e){
+    e.preventDefault()
+    document.getElementById('checkout-payment-modal').style.display = 'none'
+    orderArray = []
+    renderOrder()
+    const formData = new FormData(e.target)
+    const userName = formData.get("name")
+
+    document.getElementById('order-tray').innerHTML = `
+    <div class="order-confirm">
+        <h3>Thanks, ${userName}! Your order is on its way!</h3>
+    </div>`
+})
+
 function handleAddBtn(itemId){
     const itemObj = menuArray.find(item =>  item.id === Number(itemId))
     if (itemObj){
@@ -65,7 +83,7 @@ function placeOrder(){
                     <span>Total Price:</span>
                     <span>$${getTotal()}</span>
                 </div>
-                <button class="complete-order">${'Complete Order'}</button>
+                <button class="complete-order" id="complete-order">${'Complete Order'}</button>
         `
     }
 }
