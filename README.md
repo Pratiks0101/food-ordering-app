@@ -1,19 +1,23 @@
-# Getting Started
-Install the dependencies and run the project
-```
-npm install
-npm start
-```
+# 🍔 Food Ordering App
+A high-performance, responsive food ordering interface built with Vanilla JavaScript, focusing on dynamic DOM manipulation and state management. This project demonstrates a seamless user journey from menu discovery to a secure-simulated checkout experience.
 
-Head over to https://vitejs.dev/ to learn more about configuring vite
-## About Scrimba
+## Key Features
 
-At Scrimba our goal is to create the best possible coding school at the cost of a gym membership! 💜
-If we succeed with this, it will give anyone who wants to become a software developer a realistic shot at succeeding, regardless of where they live and the size of their wallets 🎉
-The Fullstack Developer Path aims to teach you everything you need to become a Junior Developer, or you could take a deep-dive with one of our advanced courses 🚀
+* Dynamic Menu Rendering: Efficiently renders menu items from a data module using ES6 Map and Template Literals.
 
-- [Our courses](https://scrimba.com/courses)
-- [The Frontend Career Path](https://scrimba.com/fullstack-path-c0fullstack)
-- [Become a Scrimba Pro member](https://scrimba.com/pricing)
+* Real-time Order Management: Add and remove items with instant price calculations using the reduce() method.
+
+* Event Delegation: Optimized event handling by attaching listeners to parent containers (order-tray), improving performance and memory usage.
+
+* Simulated Checkout Flow: A custom-built payment modal with form validation and a personalized post-purchase success experience.
+
+* Responsive Design: Styled with a mobile-first approach using CSS Flexbox and Fixed positioning for UI components.
+
+## Technical Stack
+* Frontend: HTML5, CSS3 (Custom Properties & Flexbox)
+
+* Logic: JavaScript (ES6+ Modules, Array Methods, Event Delegation)
+
+* Icons: Font Awesome
 
 Happy Coding!
